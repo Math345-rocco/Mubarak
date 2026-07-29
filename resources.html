@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مصادر للاستزادة | طاقة الغد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#f4ecd8;
+    --ink:#16232a;
+    --ink-soft:#425058;
+    --gold:#e0973b;
+    --leaf:#4c8c6b;
+    --water:#3a7ca5;
+    --clay:#c0623f;
+    --earth:#8a5a3b;
+    --card-bg:#ffffff;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Tajawal', sans-serif;
+    background:var(--sand);
+    color:var(--ink);
+  }
+  h1,h2,h3,.brand{ font-family:'Cairo', sans-serif; }
+  a{color:inherit;}
+
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 6vw;
+    background:rgba(244,236,216,0.9);
+    border-bottom:1px solid rgba(22,35,42,0.08);
+  }
+  .brand{font-weight:900; font-size:1.3rem; color:var(--ink); display:flex; align-items:center; gap:10px;}
+  .brand span{color:var(--gold);}
+  .logo-mark{ width:34px; height:34px; flex-shrink:0; display:block; }
+  .logo-mark .logo-sun{ fill: var(--gold); }
+  .logo-mark .logo-blade{ fill: var(--leaf); }
+  .logo-mark .logo-ring{ fill:none; stroke: var(--ink); stroke-width:2; opacity:.15; }
+  .back-link{
+    font-size:.9rem; font-weight:600; text-decoration:none; color:var(--water);
+    display:flex; align-items:center; gap:6px;
+  }
+
+  .page-hero{
+    padding:80px 6vw 50px; text-align:center;
+    background: linear-gradient(180deg, #16323a, #1c4a4a);
+    color:#fff;
+  }
+  .page-hero .eyebrow{ color:var(--gold); font-weight:700; font-size:.85rem; letter-spacing:.05em; }
+  .page-hero h1{ font-size:clamp(1.8rem,4.2vw,3rem); margin:14px 0 16px; font-weight:900; }
+  .page-hero p{ max-width:600px; margin:0 auto; color:#d7e2de; line-height:1.85; }
+
+  main{ padding:70px 6vw 100px; max-width:1000px; margin:0 auto; }
+
+  .cat{ margin-bottom:64px; }
+  .cat-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+  .cat-dot{ width:12px; height:12px; border-radius:50%; }
+  .cat-head h2{ font-size:1.4rem; margin:0; }
+
+  .res-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:20px;
+  }
+  .res-card{
+    background:var(--card-bg); border-radius:var(--radius); padding:24px;
+    text-decoration:none; color:var(--ink);
+    box-shadow:0 8px 24px rgba(22,35,42,0.06);
+    border-inline-start:4px solid transparent;
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .res-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(22,35,42,0.12); }
+  .res-card h3{ font-size:1.05rem; margin:0; }
+  .res-card p{ margin:0; font-size:.88rem; color:var(--ink-soft); line-height:1.7; }
+  .res-card .url{ font-size:.78rem; color:var(--water); margin-top:auto; direction:ltr; text-align:right; }
+
+  footer{
+    background:var(--ink); color:#cdd8d4; padding:40px 6vw; text-align:center; font-size:.85rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <svg class="logo-mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <circle class="logo-ring" cx="22" cy="22" r="19"/>
+      <circle class="logo-sun" cx="18" cy="18" r="8"/>
+      <path class="logo-blade" d="M27,20 Q34,16 33,24 Q32,29 26,26 Z"/>
+      <path class="logo-blade" d="M27,20 Q30,28 22,29 Q17,29 20,23 Z" opacity="0.85"/>
+    </svg>
+    طاقة <span>الغد</span>
+  </div>
+  <a href="index.html" class="back-link">← الرجوع للصفحة الرئيسية</a>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">للاستزادة</span>
+  <h1>مصادر ومواقع موثوقة</h1>
+  <p>لائحة مختارة من المنظمات والمواقع العالمية والمغربية إلى تقدم معلومات موثوقة ومحدّثة حول الطاقة المتجددة.</p>
+</div>
+
+<main>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-dot" style="background:var(--gold)"></span><h2>منظمات دولية</h2></div>
+    <div class="res-grid">
+      <a class="res-card" href="https://www.irena.org" target="_blank" rel="noopener">
+        <h3>الوكالة الدولية للطاقة المتجددة (IRENA)</h3>
+        <p>تقارير وإحصائيات عالمية حول الطاقة المتجددة وتطورها في مختلف الدول.</p>
+        <span class="url">irena.org</span>
+      </a>
+      <a class="res-card" href="https://www.iea.org" target="_blank" rel="noopener">
+        <h3>الوكالة الدولية للطاقة (IEA)</h3>
+        <p>تحليلات وسياسات طاقية شاملة، وبيانات حول مصادر الطاقة المختلفة بالعالم.</p>
+        <span class="url">iea.org</span>
+      </a>
+      <a class="res-card" href="https://www.un.org/ar/climatechange/what-is-renewable-energy" target="_blank" rel="noopener">
+        <h3>الأمم المتحدة — العمل المناخي</h3>
+        <p>شرح مبسط للطاقة المتجددة ودورها في مواجهة التغير المناخي.</p>
+        <span class="url">un.org</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-dot" style="background:var(--leaf)"></span><h2>مصادر مغربية</h2></div>
+    <div class="res-grid">
+      <a class="res-card" href="https://www.masen.ma" target="_blank" rel="noopener">
+        <h3>مازن (MASEN)</h3>
+        <p>الوكالة المغربية للطاقة المستدامة، المشرفة على مشاريع كبرى مثل محطة نور ورزازات.</p>
+        <span class="url">masen.ma</span>
+      </a>
+      <a class="res-card" href="https://www.mem.gov.ma" target="_blank" rel="noopener">
+        <h3>وزارة الانتقال الطاقي والتنمية المستدامة</h3>
+        <p>سياسات وخطط المغرب الرسمية في مجال الطاقة المتجددة والاستدامة.</p>
+        <span class="url">mem.gov.ma</span>
+      </a>
+      <a class="res-card" href="https://www.amee.ma" target="_blank" rel="noopener">
+        <h3>الوكالة المغربية لنجاعة الطاقة (AMEE)</h3>
+        <p>برامج ونصائح عملية حول ترشيد استهلاك الطاقة في المغرب.</p>
+        <span class="url">amee.ma</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-dot" style="background:var(--water)"></span><h2>مواقع تعليمية وبيانات</h2></div>
+    <div class="res-grid">
+      <a class="res-card" href="https://ourworldindata.org/energy" target="_blank" rel="noopener">
+        <h3>Our World in Data — الطاقة</h3>
+        <p>رسوم بيانية وإحصائيات تفاعلية حول استهلاك وإنتاج الطاقة عبر العالم.</p>
+        <span class="url">ourworldindata.org</span>
+      </a>
+      <a class="res-card" href="https://www.eia.gov/energyexplained/renewable-sources" target="_blank" rel="noopener">
+        <h3>EIA — دليل الطاقة المتجددة</h3>
+        <p>شروحات مبسطة لكل نوع من أنواع الطاقة المتجددة وكيفية عملها.</p>
+        <span class="url">eia.gov</span>
+      </a>
+      <a class="res-card" href="https://www.nationalgeographic.com/environment/article/renewable-energy" target="_blank" rel="noopener">
+        <h3>ناشيونال جيوغرافيك</h3>
+        <p>مقالات توعوية مصوّرة حول مصادر الطاقة المتجددة وتأثيرها البيئي.</p>
+        <span class="url">nationalgeographic.com</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © طاقة الغد — موقع تعليمي بسيط للتعريف بالطاقة المتجددة.
+</footer>
+
+</body>
+</html>
