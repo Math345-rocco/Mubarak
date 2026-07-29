@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>طاقة لا تنضب | دليل الطاقة المتجددة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-night:#0c2430;
+    --sky-dawn:#3a5a70;
+    --sky-day:#bfe0e8;
+    --sky-dusk:#e8a93b;
+    --sand:#f4ecd8;
+    --ink:#16232a;
+    --ink-soft:#425058;
+    --gold:#e0973b;
+    --leaf:#4c8c6b;
+    --water:#3a7ca5;
+    --clay:#c0623f;
+    --earth:#8a5a3b;
+    --card-bg:#ffffff;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Tajawal', sans-serif;
+    background:var(--sand);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Cairo', sans-serif;
+  }
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 6vw;
+    background:rgba(244,236,216,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(22,35,42,0.08);
+  }
+  .brand{font-weight:900; font-size:1.3rem; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .brand span{color:var(--gold);}
+  .nav-links{display:flex; gap:28px; font-size:.95rem; font-weight:500;}
+  .nav-links a{text-decoration:none; opacity:.8; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- HERO / HORIZON ---------- */
+  .hero{
+    position:relative;
+    height:92vh;
+    min-height:560px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    transition: background 0.15s linear;
+  }
+  .hero-sky{
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, var(--sky-night), var(--sky-dawn) 60%, var(--sky-day));
+    transition: background 0.15s linear;
+    z-index:0;
+  }
+  .sun{
+    position:absolute;
+    width:72px; height:72px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, #fff4d6, var(--gold) 70%);
+    box-shadow:0 0 60px 18px rgba(224,151,59,0.55);
+    left:50%;
+    top:78%;
+    transform:translate(-50%,-50%);
+    z-index:1;
+    transition: top 0.1s linear, box-shadow .3s;
+  }
+  .stars{position:absolute; inset:0; z-index:0; opacity:.9; transition:opacity .2s;}
+  .stars circle{fill:#fff;}
+  .hills{
+    position:absolute; bottom:0; left:0; width:100%; z-index:2;
+  }
+  .hills path{fill:#16323a;}
+  .hills .hill-2{fill:#0e2530;}
+  .turbine{transform-origin: center; }
+  .blade-group{
+    animation: spin 7s linear infinite;
+    transform-origin: 300px 90px;
+  }
+  .blade-group.b2{ transform-origin: 480px 70px; animation-duration:8.5s; }
+  .blade-group.b3{ transform-origin: 660px 100px; animation-duration:6.2s; }
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){
+    .blade-group{ animation:none; }
+    html{scroll-behavior:auto;}
+  }
+
+  .hero-content{
+    position:relative; z-index:3;
+    padding:0 6vw 8vh;
+    max-width:760px;
+    color:#fff;
+  }
+  .hero-eyebrow{
+    font-weight:600; letter-spacing:.06em; font-size:.95rem;
+    color:#ffe6b0; margin-bottom:10px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem, 6vw, 4.2rem);
+    line-height:1.15;
+    margin:0 0 18px;
+    font-weight:900;
+    text-shadow:0 4px 24px rgba(0,0,0,.25);
+  }
+  .hero p{
+    font-size:1.15rem;
+    line-height:1.8;
+    color:#eef3f0;
+    max-width:560px;
+    margin:0 0 30px;
+  }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--gold);
+    color:#1a1200;
+    font-weight:700;
+    font-family:'Cairo',sans-serif;
+    padding:14px 28px;
+    border-radius:100px;
+    text-decoration:none;
+    box-shadow:0 8px 24px rgba(224,151,59,.4);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .author{ background:#fff; padding:100px 6vw; }
+
+.eyebrow{
+  display:inline-block; font-weight:700; font-size:.85rem;
+  color:var(--water); letter-spacing:.05em; margin-bottom:12px;
+}
+
+h2{ font-size:clamp(1.6rem,3.4vw,2.6rem); margin:0 0 20px; font-weight:800; }
+
+.author-card{
+  max-width:760px; margin:0 auto;
+  display:flex; align-items:center; gap:40px;
+  background:var(--sand); border-radius:24px; padding:44px;
+  box-shadow:0 20px 50px rgba(22,35,42,0.08);
+}
+@media (max-width:640px){
+  .author-card{ flex-direction:column; text-align:center; gap:24px; }
+}
+
+.author-photo{
+  width:150px; height:150px; border-radius:50%;
+  object-fit:cover; flex-shrink:0;
+  border:4px solid #fff;
+  box-shadow:0 10px 28px rgba(22,35,42,0.18);
+}
+
+.author-info h3{ margin:0 0 6px; font-size:1.3rem; }
+
+.author-info .role{
+  display:inline-block; font-family:'Cairo',sans-serif; font-weight:700;
+  font-size:.85rem; color:var(--water); margin-bottom:12px;
+}
+
+.author-info p{
+  margin:0; color:var(--ink-soft); line-height:1.85; font-size:.95rem;
+}
+  .hero-cta:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(224,151,59,.5);}
+  .scroll-hint{
+    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+    z-index:3; color:#fff; opacity:.75; font-size:.85rem;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .scroll-hint .line{width:1px; height:26px; background:#fff; opacity:.6; animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.2;} 50%{opacity:.8;}}
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:100px 6vw; }
+  .section-inner{ max-width:1100px; margin:0 auto; }
+  .eyebrow{
+    display:inline-block; font-weight:700; font-size:.85rem;
+    color:var(--water); letter-spacing:.05em; margin-bottom:12px;
+  }
+  h2{ font-size:clamp(1.6rem,3.4vw,2.6rem); margin:0 0 20px; font-weight:800; }
+  .lead{ font-size:1.1rem; line-height:1.9; color:var(--ink-soft); max-width:720px; }
+
+  .intro{ background:var(--sand); }
+  .intro-grid{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap:60px; align-items:center;
+  }
+  @media (max-width:840px){ .intro-grid{grid-template-columns:1fr;} }
+  .stat-cluster{ display:flex; flex-direction:column; gap:18px; }
+  .stat{
+    background:var(--card-bg); border-radius:var(--radius); padding:22px 26px;
+    border-inline-start:5px solid var(--leaf);
+    box-shadow:0 10px 30px rgba(22,35,42,0.06);
+  }
+  .stat b{ font-family:'Cairo',sans-serif; font-size:1.6rem; display:block; color:var(--ink); }
+  .stat span{ color:var(--ink-soft); font-size:.95rem; }
+
+  /* Types */
+  .types{ background:#fff; }
+  .type-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:26px; margin-top:44px;
+  }
+  .type-card{
+    background:var(--sand);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .type-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(22,35,42,0.12); }
+  .type-icon{ width:56px; height:56px; margin-bottom:18px; }
+  .type-card h3{ font-size:1.2rem; margin:0 0 10px; }
+  .type-card p{ margin:0; color:var(--ink-soft); font-size:.95rem; line-height:1.75; }
+  .type-card .tag{
+    position:absolute; top:20px; left:20px;
+    font-size:.7rem; font-weight:700; padding:4px 10px; border-radius:100px;
+    color:#fff;
+  }
+
+  /* Why it matters */
+  .why{ background:linear-gradient(180deg, var(--ink) 0%, #1c333c 100%); color:#fff; }
+  .why h2{color:#fff;}
+  .why .lead{color:#cdd8d4;}
+  .why-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:50px;
+  }
+  @media (max-width:840px){ .why-grid{grid-template-columns:1fr;} }
+  .why-item{ border-inline-start:2px solid rgba(255,255,255,0.2); padding-inline-start:22px; }
+  .why-item .num{ font-family:'Cairo',sans-serif; font-weight:900; font-size:2rem; color:var(--gold); display:block; margin-bottom:8px; }
+  .why-item h3{ margin:0 0 10px; font-size:1.1rem; }
+  .why-item p{ margin:0; color:#c7d2ce; font-size:.95rem; line-height:1.8; }
+
+  /* Morocco spotlight */
+  .morocco{ background:var(--sand); }
+  .morocco-card{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    background:var(--card-bg); border-radius:24px; overflow:hidden;
+    box-shadow:0 20px 50px rgba(22,35,42,0.1);
+  }
+  @media (max-width:840px){ .morocco-card{grid-template-columns:1fr;} }
+  .morocco-visual{
+    background: linear-gradient(160deg, #12303a, #2a5a4a);
+    position:relative; min-height:280px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .morocco-text{ padding:44px; }
+  .morocco-text h3{ font-size:1.5rem; margin:0 0 14px; }
+  .morocco-text p{ color:var(--ink-soft); line-height:1.85; margin:0 0 14px; }
+  .morocco-fact{
+    display:inline-flex; align-items:baseline; gap:8px; margin-top:10px;
+    font-family:'Cairo',sans-serif; font-weight:800; color:var(--clay); font-size:1.4rem;
+  }
+  .morocco-fact span{ font-family:'Tajawal',sans-serif; font-weight:400; font-size:.9rem; color:var(--ink-soft); }
+
+  
+  footer{
+    background:var(--ink); color:#cdd8d4; padding:50px 6vw 30px; text-align:center;
+    font-size:.9rem;
+  }
+  footer .brand{ color:#fff; justify-content:center; margin-bottom:14px; }
+  footer .brand span{color:var(--gold);}
+  .contact-list{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:26px;
+    margin:26px 0 30px; padding:0; list-style:none;
+  }
+  .contact-list li{
+    display:flex; align-items:center; gap:10px;
+    font-size:.95rem; color:#f4ecd8;
+  }
+  .contact-list a{ text-decoration:none; color:#f4ecd8; transition:color .2s; }
+  .contact-list a:hover{ color:var(--gold); }
+  .contact-list svg{ width:20px; height:20px; flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">☀ طاقة <span>الغد</span></div>
+  <div class="nav-links">
+    <a href="#intro">التعريف</a>
+    <a href="#types">الأنواع</a>
+    <a href="#why">الأهمية</a>
+    <a href="#morocco">نموذج مغربي</a>
+  </div>
+</nav>
+
+<div class="hero" id="heroSection">
+  <svg class="stars" id="stars" width="100%" height="60%" viewBox="0 0 1000 400" preserveAspectRatio="none">
+    <circle cx="60" cy="60" r="1.6"/><circle cx="160" cy="120" r="1.2"/><circle cx="260" cy="40" r="1.4"/>
+    <circle cx="340" cy="150" r="1.1"/><circle cx="420" cy="70" r="1.6"/><circle cx="520" cy="130" r="1.3"/>
+    <circle cx="600" cy="50" r="1.2"/><circle cx="700" cy="110" r="1.5"/><circle cx="800" cy="60" r="1.2"/>
+    <circle cx="900" cy="140" r="1.4"/><circle cx="950" cy="80" r="1.1"/><circle cx="120" cy="200" r="1.2"/>
+    <circle cx="480" cy="200" r="1.1"/><circle cx="850" cy="200" r="1.3"/>
+  </svg>
+
+  <div class="hero-sky" id="heroSky"></div>
+  <div class="sun" id="sun"></div>
+
+  <svg class="hills" viewBox="0 0 1000 220" preserveAspectRatio="none" style="height:40%;">
+    <path class="hill-2" d="M0,140 Q250,80 500,130 T1000,110 L1000,220 L0,220 Z"></path>
+    <path d="M0,180 Q220,120 480,170 T1000,150 L1000,220 L0,220 Z"></path>
+
+    <g class="turbine">
+      <line x1="300" y1="90" x2="300" y2="220" stroke="#0a1c22" stroke-width="4"/>
+      <g class="blade-group">
+        <rect x="297" y="40" width="6" height="50" fill="#f4ecd8" transform="rotate(0 300 90)"/>
+        <rect x="297" y="40" width="6" height="50" fill="#f4ecd8" transform="rotate(120 300 90)"/>
+        <rect x="297" y="40" width="6" height="50" fill="#f4ecd8" transform="rotate(240 300 90)"/>
+      </g>
+    </g>
+    <g class="turbine">
+      <line x1="480" y1="70" x2="480" y2="200" stroke="#0a1c22" stroke-width="4"/>
+      <g class="blade-group b2">
+        <rect x="477" y="24" width="5" height="46" fill="#f4ecd8" transform="rotate(0 480 70)"/>
+        <rect x="477" y="24" width="5" height="46" fill="#f4ecd8" transform="rotate(120 480 70)"/>
+        <rect x="477" y="24" width="5" height="46" fill="#f4ecd8" transform="rotate(240 480 70)"/>
+      </g>
+    </g>
+    <g class="turbine">
+      <line x1="660" y1="100" x2="660" y2="215" stroke="#0a1c22" stroke-width="4"/>
+      <g class="blade-group b3">
+        <rect x="657" y="56" width="6" height="44" fill="#f4ecd8" transform="rotate(0 660 100)"/>
+        <rect x="657" y="56" width="6" height="44" fill="#f4ecd8" transform="rotate(120 660 100)"/>
+        <rect x="657" y="56" width="6" height="44" fill="#f4ecd8" transform="rotate(240 660 100)"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">دليل مبسّط للجميع</span>
+    <h1>الطاقة التي لا تنضب</h1>
+    <p>الشمس تشرق كل يوم، والريح لا تتوقف عن الهبوب، والماء يواصل جريانه. هذه هي الطاقة المتجددة: طاقة تتجدد من تلقاء نفسها، بدل أن تُستهلك وتنتهي.</p>
+    <a href="#types" class="hero-cta">اكتشف الأنواع ↓</a>
+  </div>
+
+  <div class="scroll-hint"><span>مرر للأسفل</span><div class="line"></div></div>
+</div>
+
+<section class="intro" id="intro">
+  <div class="section-inner intro-grid">
+    <div>
+      <span class="eyebrow">ما هي الطاقة المتجددة؟</span>
+      <h2>طاقة من مصادر لا تنفد</h2>
+      <p class="lead">
+        الطاقة المتجددة هي الطاقة المستمدة من مصادر طبيعية تتجدد باستمرار، مثل ضوء الشمس والرياح والماء وحرارة باطن الأرض. على عكس البترول والغاز والفحم، وهي مصادر محدودة تحتاج لملايين السنين لتتكوّن، فإن مصادر الطاقة المتجددة متوفرة بشكل دائم ولا تنضب مع الاستخدام، كما أنها أقل ضررًا على البيئة.
+      </p>
+    </div>
+    <div class="stat-cluster">
+      <div class="stat"><b>5 أنواع رئيسية</b><span>شمسية، ريحية، مائية، حرارية أرضية، وحيوية</span></div>
+      <div class="stat"><b>انبعاثات أقل</b><span>لا تنتج غازات دفيئة أثناء إنتاج الطاقة</span></div>
+      <div class="stat"><b>مصدر متجدد يوميًا</b><span>الشمس والريح متوفرتان كل يوم تقريبًا</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="types" id="types">
+  <div class="section-inner">
+    <span class="eyebrow">الأنواع</span>
+    <h2>خمسة مصادر تُشغّل العالم من جديد كل يوم</h2>
+    <p class="lead">لكل مصدر طبيعته الخاصة، وتقنيته الخاصة لتحويله إلى كهرباء أو حرارة قابلة للاستخدام.</p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <span class="tag" style="background:var(--gold)">شمسية</span>
+        <svg class="type-icon" viewBox="0 0 60 60"><circle cx="30" cy="30" r="14" fill="var(--gold)"/><g stroke="var(--gold)" stroke-width="3" stroke-linecap="round"><line x1="30" y1="4" x2="30" y2="12"/><line x1="30" y1="48" x2="30" y2="56"/><line x1="4" y1="30" x2="12" y2="30"/><line x1="48" y1="30" x2="56" y2="30"/><line x1="11" y1="11" x2="17" y2="17"/><line x1="43" y1="43" x2="49" y2="49"/><line x1="49" y1="11" x2="43" y2="17"/><line x1="17" y1="43" x2="11" y2="49"/></g></svg>
+        <h3>الطاقة الشمسية</h3>
+        <p>تحوّل الألواح الفوتوفولطية ضوء الشمس مباشرة إلى كهرباء، وتُستخدم على أسطح المنازل وفي محطات كبرى في الصحاري المشمسة.</p>
+      </div>
+
+      <div class="type-card">
+        <span class="tag" style="background:var(--water)">ريحية</span>
+        <svg class="type-icon" viewBox="0 0 60 60"><circle cx="30" cy="30" r="3" fill="var(--water)"/><g fill="var(--water)"><path d="M30,30 Q30,10 40,12 Q46,14 40,24 Z"/><path d="M30,30 Q46,34 44,44 Q42,50 32,42 Z" transform="rotate(120 30 30)"/><path d="M30,30 Q46,34 44,44 Q42,50 32,42 Z" transform="rotate(240 30 30)"/></g></svg>
+        <h3>طاقة الرياح</h3>
+        <p>تدور شفرات التوربينات الهوائية بفعل حركة الهواء، فتُحرّك مولّدًا ينتج الكهرباء، غالبًا في المناطق الساحلية والمرتفعة.</p>
+      </div>
+
+      <div class="type-card">
+        <span class="tag" style="background:var(--leaf)">مائية</span>
+        <svg class="type-icon" viewBox="0 0 60 60"><path d="M30,8 C20,24 12,32 12,40 a18,18 0 0 0 36,0 C48,32 40,24 30,8 Z" fill="var(--leaf)"/></svg>
+        <h3>الطاقة المائية</h3>
+        <p>تستغل السدود قوة اندفاع المياه من ارتفاع معيّن لتدوير توربينات وإنتاج الكهرباء، وهي من أقدم أشكال الطاقة المتجددة استخدامًا.</p>
+      </div>
+
+      <div class="type-card">
+        <span class="tag" style="background:var(--clay)">حرارية أرضية</span>
+        <svg class="type-icon" viewBox="0 0 60 60"><path d="M12,52 L30,10 L48,52 Z" fill="var(--clay)"/><path d="M22,52 L30,32 L38,52 Z" fill="#f4ecd8"/></svg>
+        <h3>الطاقة الحرارية الأرضية</h3>
+        <p>تستغل الحرارة المخزّنة في باطن الأرض لتوليد البخار الذي يُحرّك التوربينات، أو للتدفئة المباشرة في المناطق البركانية.</p>
+      </div>
+
+      <div class="type-card">
+        <span class="tag" style="background:var(--earth)">حيوية</span>
+        <svg class="type-icon" viewBox="0 0 60 60"><path d="M30,52 C22,52 16,44 18,34 C20,42 26,44 26,44 C22,34 26,22 34,14 C32,26 34,32 38,34 C42,26 40,18 40,18 C48,28 48,42 38,50 C35,52 32,52 30,52 Z" fill="var(--earth)"/></svg>
+        <h3>الطاقة الحيوية</h3>
+        <p>تُحوَّل المخلفات الزراعية والنباتية والعضوية إلى وقود حيوي أو غاز أو حرارة، مما يمنح النفايات حياة ثانية كمصدر للطاقة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <span class="eyebrow" style="color:var(--gold);">لماذا تهمنا؟</span>
+    <h2>ثلاثة أسباب تجعل التحول ضروريًا</h2>
+    <p class="lead">الانتقال نحو الطاقة المتجددة ليس مجرد خيار بيئي، بل قرار يمس الاقتصاد والصحة العامة أيضًا.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="num">١</span>
+        <h3>حماية البيئة</h3>
+        <p>لا تنتج معظم مصادر الطاقة المتجددة انبعاثات كربونية أثناء التشغيل، مما يقلّل من التلوث وتغيّر المناخ.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">٢</span>
+        <h3>استقلال الطاقة</h3>
+        <p>تقلّل الطاقة المتجددة من الاعتماد على استيراد الوقود الأحفوري، وتمنح الدول تحكمًا أكبر في مصادر طاقتها.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">٣</span>
+        <h3>فرص اقتصادية</h3>
+        <p>يخلق قطاع الطاقة المتجددة وظائف جديدة في التركيب والصيانة والبحث، ويفتح المجال لاستثمارات محلية ودولية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="morocco" id="morocco">
+  <div class="section-inner">
+    <span class="eyebrow">نموذج من أرض الواقع</span>
+    <h2>المغرب ومحطة نور ورزازات</h2>
+    <div class="morocco-card">
+      <div class="morocco-visual">
+        <svg width="70%" viewBox="0 0 200 140">
+          <circle cx="160" cy="30" r="18" fill="var(--gold)"/>
+          <g stroke="#f4ecd8" stroke-width="2">
+            <line x1="20" y1="100" x2="180" y2="100"/>
+            <line x1="30" y1="100" x2="30" y2="80"/>
+            <line x1="60" y1="100" x2="60" y2="75"/>
+            <line x1="90" y1="100" x2="90" y2="82"/>
+            <line x1="120" y1="100" x2="120" y2="76"/>
+            <line x1="150" y1="100" x2="150" y2="80"/>
+          </g>
+        </svg>
+      </div>
+      <div class="morocco-text">
+        <h3>أكبر محطة للطاقة الشمسية المركّزة في العالم</h3>
+        <p>تقع محطة "نور" للطاقة الشمسية بمدينة ورزازات جنوب المغرب، وتعتمد على تقنية المرايا العاكسة التي تُركّز أشعة الشمس لتسخين سائل ينتج البخار المحرّك للتوربينات.</p>
+        <p>تُعتبر هذه المحطة جزءًا من استراتيجية المغرب للوصول إلى نسبة مرتفعة من الطاقة المتجددة ضمن مزيجه الطاقي، وتُعدّ من أبرز المشاريع في إفريقيا والعالم العربي.</p>
+        <div class="morocco-fact">ورزازات <span>— بوابة الصحراء المغربية</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="author" id="author">
+  <div class="section-inner" style="text-align:center;">
+    <span class="eyebrow">عن الكاتب</span>
+    <h2>وراء هذا الموقع</h2>
+    <div class="author-card">
+      <img class="author-photo" src="chemin/vers/Capture.png" alt="صورة الكاتب">
+      <div class="author-info">
+        <h3>Moubarak El ksiabi</h3>
+        <span class="role"> Étudiant</span>
+        <p>أعمل على تبسيط المفاهيم العلمية والتعريف بمواضيع مهمة مثل الطاقة المتجددة بطريقة واضحة وسهلة للجميع.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">☀ طاقة <span>الغد</span></div>
+  <p>موقع تعليمي بسيط للتعريف بالطاقة المتجددة وأنواعها وأهميتها.</p>
+
+  <ul class="contact-list">
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+      <a href="yummychickenplace@gmail.com">Email</a>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg>
+      <a href="tel:+212 716-772724"target="_blank" rel="noopener"> whatsapp </a>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      <a href="https://www.facebook.com/groups/872691231870475/user/61579804387883/" target="_blank" rel="noopener"> Facebook</a>
+    </li>
+  </ul>
+</footer>
+
+<script>
+  // Day-cycle: as the user scrolls through the hero, the sky and sun move from night to day.
+  const hero = document.getElementById('heroSection');
+  const sky = document.getElementById('heroSky');
+  const sun = document.getElementById('sun');
+  const stars = document.getElementById('stars');
+
+  const nightSky = ['#0c2430', '#0f2e38', '#12303a'];
+  function lerpColor(a, b, t){
+    const pa = a.match(/\w\w/g).map(x=>parseInt(x,16));
+    const pb = b.match(/\w\w/g).map(x=>parseInt(x,16));
+    const p = pa.map((c,i)=>Math.round(c+(pb[i]-c)*t));
+    return '#' + p.map(c=>c.toString(16).padStart(2,'0')).join('');
+  }
+
+  function updateHero(){
+    const rect = hero.getBoundingClientRect();
+    const total = rect.height;
+    const scrolled = Math.min(Math.max(-rect.top, 0), total);
+    const t = scrolled / total; // 0 = top of page, 1 = scrolled past hero
+
+    // Sky gradient: night -> dawn -> day
+    const top = lerpColor('#0c2430', '#5aa7c4', Math.min(t*1.4,1));
+    const bottom = lerpColor('#0f2e38', '#f4ecd8', Math.min(t*1.4,1));
+    sky.style.background = `linear-gradient(to bottom, ${top}, ${bottom})`;
+
+    // Sun arcs upward across the sky as user scrolls
+    const sunTop = 92 - t*70; // percent
+    sun.style.top = sunTop + '%';
+    sun.style.boxShadow = `0 0 ${40+t*40}px ${14+t*14}px rgba(224,151,59,${0.35+t*0.35})`;
+
+    // Stars fade out as day breaks
+    stars.style.opacity = Math.max(1 - t*1.6, 0);
+  }
+
+  window.addEventListener('scroll', updateHero, { passive: true });
+  window.addEventListener('resize', updateHero);
+  updateHero();
+</script>
+
+</body>
+</html>
